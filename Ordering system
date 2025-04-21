@@ -1,0 +1,547 @@
+// first classs
+import java.util.*;
+public class Ordering {
+
+ Scanner sc = new Scanner(System.in); 
+
+ public void FoodDisplay(){ 
+ prt("\n----------------------------------------");
+ prt("\n         WELCOME TO MANG-INASAL!\n");
+ prt("----------------------------------------");
+ prt("****************************************");
+ prt("**      Please select the category    **");
+ prt("**        [1] REGULAR                 **");
+ prt("**        [2] SOLO FIESTA             **");
+ prt("**        [3] PORK BBQ                **");
+ prt("**        [4] HALO-HALO               **");
+ prt("**        [5] SISIG                   **");    // Food menu display
+ prt("**        [6] LIEMPO                  **");
+ prt("**        [7] GROUP MEALS             **");
+ prt("**        [8] FIESTA GROUP MEALs      **");
+ prt("**        [9] PALABOK                 **");
+ prt("**        [10] LUMPIANG TOGUE         **");
+ prt("**        [11] DRINKS                 **");
+ prt("****************************************");
+ }
+
+//Declaration variables for Regular category
+float reg1 = 129.00f;
+float reg2 = 164.00f;
+float reg3 = 154.00f;
+float reg4 = 189.00f;
+float reg5 = 99.00f;
+//Declaration variables for Solo Fiesta category
+float sf1 = 189.00f;
+float sf2 = 219.00f;
+float sf3 = 244.00f;
+float sf4 = 250.00f;
+float sf5 = 275.00f;
+//Declaration variables for Pork BBQ category
+float pbbq1 = 99.00f;
+float pbbq2 = 129.00f;
+//Declaration variables for HALO-HALO category
+float halo1 = 39.00f;
+float halo2 = 70.00f;
+float halo3 = 90.00f;
+float halo4 = 39.00f;
+float halo5 = 70.00f;
+float halo6 = 90.00f;
+
+//Declaration variables for the totalizalitaion
+float total = 0;
+float totalP = 0;
+int totalItems = 0;
+
+//Declaration variables for VAT and Discount
+float VAT = 0.12f;
+float discountPWD = 0.15f;
+float discountSenior = 0.20f;
+float calculateVAT;
+float calculateVAT2;
+float totalplusVAT;
+
+//String again;                    (IGNORE THIS COMMENT LINE).
+
+List<String> orderNames = new ArrayList<>();
+List<Float> orderPrice = new ArrayList<>();
+List<Integer> orderQuantity = new ArrayList<>();
+List<Float> totalPrice = new ArrayList<>();
+List<Integer> foodItems = new ArrayList<>();
+
+public void pickFood(){
+    int pick = 0;
+    int regular = 0;
+   // boolean a = true;            (IGNORE THIS COMMENT LINE).
+ ///   while(true){                (IGNORE THIS COMMENT LINE).
+        
+ while(pick<1||pick>5){ // LOOPING FOR PICKING CHOICE
+
+    try {// Try Catch for 'INPUT MISMATCH' EXCEPTION
+ prt("\nPICK YOUR CHOICE : ");
+ pick = sc.nextInt();
+}catch(Exception e){
+    String again2;
+    prt("invalid input, try again.");
+    again2=sc.nextLine();   
+ }
+ 
+ if(pick==1){                                             //REGULAR
+    prt("\n* REGULAR *");
+    prt("> [1] Chicken inasal paa large 1 rice solo = 129php");
+    prt("> [2] Chicken inasal paa large unli-rice solo = 164php");
+    prt("> [3] Chicken Inasal Pecho Large 1 Rice Solo = 154php");
+    prt("> [4] Chicken Inasal Pecho Unli-Rice Solo = 189php");
+    prt("> [5] Chicken Inasal Regular = 99php");
+    
+    while(regular<1||regular>5){
+
+    try{// Try Catch for 'INPUT MISMATCH' EXCEPTION
+    prt("CHOOSE YOUR ORDER : ");
+    regular =sc.nextInt();
+    }catch(Exception e){
+        String again3;
+        prt("Invalid input, try again.");
+        again3=sc.nextLine();
+    }
+    
+    if(regular==1){
+        prt("\n* You choose chicken inasal paa large 1 rice solo for 129Php");
+        prt("ENTER QUANTITY : ");
+        int quantity=sc.nextInt();
+        sc.nextLine();
+        total+= quantity*reg1;
+        totalP = quantity*reg1;
+        orderNames.add("chicken inasal paa large 1 rice solo");
+        orderPrice.add(reg1);
+        orderQuantity.add(quantity);
+        totalPrice.add(totalP);
+
+    }else if(regular==2){
+        prt("\n*You choose chicken inasal paa large unli-rice solo for 164Php");
+        prt("ENTER QUANTITY : ");
+        int quantity=sc.nextInt();
+        sc.nextLine();
+        total+=quantity*reg2;
+        totalP = quantity*reg2;
+        orderNames.add("chicken inasal paa large unli-rice solo");
+        orderPrice.add(reg2);
+        orderQuantity.add(quantity);
+        totalPrice.add(totalP);
+
+    }else if(regular==3){
+        prt("\n*You choose Chicken Inasal Pecho Large 1 Rice Solo for 154Php");
+        prt("ENTER QUANTITY : ");
+        int quantity=sc.nextInt();
+        sc.nextLine();
+        total+=quantity*reg3;
+        totalP = quantity*reg3;
+        orderNames.add("Chicken Inasal Pecho Large 1 Rice Solo");
+        orderPrice.add(reg3);
+        orderQuantity.add(quantity);
+        totalPrice.add(totalP);
+    }else if(regular==4){
+        prt("\n*You choose Chicken Inasal Pecho Unli-Rice Solo for 189php");
+        prt("ENTER QUANTITY : ");
+        int quantity=sc.nextInt();
+        sc.nextLine();
+        total+=quantity*reg4;
+        totalP = quantity*reg4;
+        orderNames.add("Chicken Inasal Pecho Unli-Rice Solo");
+        orderPrice.add(reg4);
+        orderQuantity.add(quantity);
+        totalPrice.add(totalP);
+    }else if(regular==5){
+        prt("\n*You choose Chicken Inasal Regular for 99php");
+        prt("ENTER QUANTITY : ");
+        int quantity=sc.nextInt();
+        sc.nextLine();
+        total+=quantity*reg5;
+        totalP = quantity*reg5;
+        orderNames.add("Chicken Inasal Regular");
+        orderPrice.add(reg5);
+        orderQuantity.add(quantity);
+        totalPrice.add(totalP);
+    }
+    }
+    }else if(pick==2){                           // SOLO FIESTA
+        prt("\n* SOLO-FIESTA *");
+        prt("> [1] Solo Fiesta 2pc pork BBQ 1r solo = 189php");
+        prt("> [2] Solo Fiesta Paa 1r solo = 219php");
+        prt("> [3] Solo Fiesta Pecho 1R Solo = 244php");
+        prt("> [4] Solo Fiesta Paa & 1pc Pork BBQ 1R Solo = 250php");
+        prt("> [5] Solo Fiesta Pecho & 1pc Pork BBQ 1R Solo = 275php");
+        prt("ENTER YOUR ORDER: ");
+        int SoloF=sc.nextInt();
+        if(SoloF==1){
+            prt("\n*You choose Solo Fiesta 2pc pork BBQ 1r solo for "+sf1+"Php");
+            prt("ENTER QUANTITY : ");
+            int quantity=sc.nextInt();
+            sc.nextLine();
+            total+=quantity*sf1;
+            totalP=quantity*sf1;
+            orderNames.add(" Solo Fiesta 2pc pork BBQ 1r solo");
+            orderPrice.add(sf1);
+            orderQuantity.add(quantity);
+            totalPrice.add(totalP);
+        }else if(SoloF==2){
+            prt("\n*You choose Solo Fiesta paa 1r solo for "+sf2+"Php");
+            prt("ENTER QUANTITY : ");
+            int quantity=sc.nextInt();
+            sc.nextLine();
+            total+=quantity*sf2;
+            totalP = quantity*sf2;
+            orderNames.add("Solo Fiesta paa 1r solo");
+            orderPrice.add(sf2);
+            orderQuantity.add(quantity);
+            totalPrice.add(totalP);
+        }else if(SoloF==3){
+            prt("\n*You choose Solo Fiesta Pecho 1R Solo for "+sf3+"Php");
+            prt("ENTER QUANTITY : ");
+            int quantity=sc.nextInt();
+            sc.nextLine();
+            total+=quantity*sf3;
+            totalP = quantity*sf3;
+            orderNames.add("Solo Fiesta Pecho 1R Solo");
+            orderPrice.add(sf3);
+            orderQuantity.add(quantity);
+            totalPrice.add(totalP);
+        }else if(SoloF==4){
+            prt("\n*You choose Solo Fiesta Paa & 1pc Pork BBQ 1R Solo for "+sf4+"Php");
+            prt("ENTER QUANTITY : ");
+            int quantity=sc.nextInt();
+            sc.nextLine();
+            total+=quantity*sf4;
+            totalP = quantity*sf4;
+            orderNames.add("Solo Fiesta Paa & 1pc Pork BBQ 1R Solo");
+            orderPrice.add(sf4);
+            orderQuantity.add(quantity);
+            totalPrice.add(totalP);
+        }else if(SoloF==5){
+            prt("\n*You choose Solo Fiesta Pecho & 1pc Pork BBQ 1R Solo for "+sf5+"Php");
+            prt("ENTER QUANTITY : ");
+            int quantity=sc.nextInt();
+            sc.nextLine();
+            total+=quantity*sf5;
+            totalP = quantity*sf5;
+            orderNames.add("Solo Fiesta Pecho & 1pc Pork BBQ 1R Solo");
+            orderPrice.add(sf5);
+            orderQuantity.add(quantity);
+            totalPrice.add(totalP);
+        }    
+        }else if(pick==3){                           //PORK BBQ
+            prt("\n* PORK BBQ *");
+            prt("> [1] 2pc Pork BBQ with Plain Rice and Spiced Vinegar = 99php");
+            prt("> [2] 2pc Pork BBQ with Java Rice and Peanut Sauce = 129php");
+            prt("ENTER YOUR ORDER: ");
+            int PBBQ=sc.nextInt();
+            if(PBBQ==1){
+                prt("\n*You choose 2pc Pork BBQ with Plain Rice and Spiced Vinegar for "+pbbq1+"Php");
+                prt("ENTER QUANTITY : ");
+                int quantity=sc.nextInt();
+                sc.nextLine();
+                total+=quantity*pbbq1;
+                totalP = quantity*pbbq1;
+                orderNames.add("2pc Pork BBQ with Plain Rice and Spiced Vinegar");
+                orderPrice.add(pbbq1);
+                orderQuantity.add(quantity);
+                totalPrice.add(totalP);
+            }else if(PBBQ==2){
+                prt("\n*You choose 2pc Pork BBQ with Java Rice and Peanut Sauce for "+pbbq2+"Php");
+                prt("ENTER QUANTITY : ");
+                int quantity=sc.nextInt();
+                sc.nextLine();
+                total+=quantity*pbbq2;
+                totalP = quantity*pbbq2;
+                orderNames.add("2pc Pork BBQ with Java Rice and Peanut Sauce");
+                orderPrice.add(pbbq2);
+                orderQuantity.add(quantity);
+                totalPrice.add(totalP);
+            }
+        }else if(pick==4){ // HALO-HALO
+            prt("\n* HALO-HALO *");
+            prt("> [1] Extra Creamy Halo-Halo 8oz Add-on = 39php");
+            prt("> [2] Extra Creamy Halo-Halo Small = 70php");
+            prt("> [3] Extra Creamy Halo-Halo Regular = 90php");
+            prt("> [4] Crema de Leche Halo-Halo 8oz Add-on = 39php");
+            prt("> [5] Crema de Leche Halo-Halo Small = 70php");
+            prt("> [6] Crema de Leche Halo-Halo Regular = 90php");
+            prt("ENTER YOUR ORDER: ");
+            int Halo=sc.nextInt();
+            if(Halo==1){
+                prt("\n*You choose Extra Creamy Halo-Halo 8oz Add-on for "+halo1+"Php");
+                prt("ENTER QUANTITY : ");
+                int quantity=sc.nextInt();
+                sc.nextLine();
+                total+=quantity*halo1;
+                totalP = quantity*halo1;
+                orderNames.add("Extra Creamy Halo-Halo 8oz Add-on");
+                orderPrice.add(halo1);
+                orderQuantity.add(quantity);
+                totalPrice.add(totalP);
+            }else if(Halo==2){
+                prt("\n*You choose Extra Creamy Halo-Halo Small for "+halo2+"Php");
+                prt("ENTER QUANTITY : ");
+                int quantity=sc.nextInt();
+                sc.nextLine();
+                total+=quantity*halo2;
+                totalP = quantity*halo2;
+                orderNames.add("Extra Creamy Halo-Halo Small");
+                orderPrice.add(halo2);
+                orderQuantity.add(quantity);
+                totalPrice.add(totalP);
+            }else if(Halo==3){
+                prt("\n*You choose Extra Creamy Halo-Halo Regular for "+halo3+"Php");
+                prt("ENTER QUANTITY : ");
+                int quantity=sc.nextInt();
+                sc.nextLine();
+                total+=quantity*halo3;
+                totalP = quantity*halo3;
+                orderNames.add("Extra Creamy Halo-Halo Regular");
+                orderPrice.add(halo3);
+                orderQuantity.add(quantity);
+                totalPrice.add(totalP);
+            }else if(Halo==4){
+                prt("\n*You choose Crema de Leche Halo-Halo 8oz Add-on for "+halo4+"Php");
+                prt("ENTER QUANTITY : ");
+                int quantity=sc.nextInt();
+                sc.nextLine();
+                total+=quantity*halo4;
+                totalP = quantity*halo4;
+                orderNames.add("Crema de Leche Halo-Halo 8oz Add-on");
+                orderPrice.add(halo4);
+                orderQuantity.add(quantity);
+                totalPrice.add(totalP);
+            }else if(Halo==5){
+                prt("\n*You choose Crema de Leche Halo-Halo Small for "+halo5+"Php");
+                prt("ENTER QUANTITY : ");
+                int quantity=sc.nextInt();
+                sc.nextLine();
+                total+=quantity*halo5;
+                totalP = quantity*halo5;
+                orderNames.add("Crema de Leche Halo-Halo Small");
+                orderPrice.add(halo5);
+                orderQuantity.add(quantity);
+                totalPrice.add(totalP);
+            }else if(Halo==6){
+                prt("\n*You choose Crema de Leche Halo-Halo Regular for "+halo6+"Php");
+                prt("ENTER QUANTITY : ");
+                int quantity=sc.nextInt();
+                sc.nextLine();
+                total+=quantity*halo6;
+                totalP = quantity*halo6;
+                orderNames.add("Crema de Leche Halo-Halo Regular");
+                orderPrice.add(halo5);
+                orderQuantity.add(quantity);
+                totalPrice.add(totalP);
+            }
+        }else if(pick==5){ // SISIG
+
+        }
+ }
+ }
+public void choiceC(){
+    String pick2="";
+    while (true||pick2.isBlank()){
+    prt("\nPress 'Y' to order more");
+    prt("Press 'N' for no more order");
+    prt("press 'D' to discard your order");
+    prt("ENTER YOUR CHOICE : ");
+
+    pick2=sc.nextLine();
+//    again=sc.next();             (IGNORE THIS LINE).
+   if(pick2.toUpperCase().equals("Y")){
+ prt("\n****************************************");
+ prt("**      Please select the category    **");
+ prt("**        [1] REGULAR                 **");
+ prt("**        [2] SOLO FIESTA             **");
+ prt("**        [3] PORK BBQ                **");
+ prt("**        [4] HALO-HALO               **");
+ prt("**        [5] SISIG                   **");
+ prt("**        [6] LIEMPO                  **");
+ prt("**        [7] GROUP MEALS             **");
+ prt("**        [8] FIESTA GROUP MEALs      **");
+ prt("**        [9] PALABOK                 **");
+ prt("**        [10] LUMPIANG TOGUE         **");
+ prt("**        [11] DRINKS                 **");
+ prt("****************************************");
+    pickFood();
+    choiceC();
+    billBruh();
+   }else if(pick2.toUpperCase().equals("N")){
+    billBruh();
+   } else if(pick2.toUpperCase().equals("D")){
+    String yes = "";
+    while(true||yes.isBlank()){
+        prt("\nARE YOU SURE? (Y/N): ");
+        yes = sc.nextLine();
+         if(yes.toUpperCase().equals("Y")){
+            discardOrder();
+         }else if(yes.toUpperCase().equals("N")){
+           choiceC();
+         }else{
+            prt("\nINVALID INPUT! PLEASE TRY AGAIN.");
+         }
+       }
+   }else{
+    prt("\nINVALID INPUT! TRY AGAIN.");
+   }
+}
+}
+
+
+/*if(again.equalsIgnoreCase("N")){             
+        billBruh();
+        //a=false;
+    } else if (again.equalsIgnoreCase("D")){
+        prt("are you sure?: (Y/N) : ");
+        String y = sc.next();
+        if(y.equalsIgnoreCase("Y")){
+        discardOrder();                                          (IGNORE THIS WHOLE LINE OF CODES)
+       ///a=false;
+        }
+     }else if(again.equalsIgnoreCase("Y")){
+        prt("             [1] SNACKS               ");
+ prt("             [2] DRINKS               ");
+        pickFood();
+        choiceC();
+        billBruh();
+        ///a=true;
+    }*/
+
+
+//}
+//} pickfood brace
+   
+    public void billBruh(){
+
+    float cash = 0.0f; //Declaration variable for 'cash'
+
+        
+    calculateVAT = VAT*total;
+    calculateVAT2 = total-calculateVAT;
+    totalplusVAT = calculateVAT2+calculateVAT; 
+
+    prt("\nBILL: \n");
+    for(int i=0; i<orderNames.size(); i++){
+        prt(orderNames.get(i)+ " | PRICE: "+orderPrice.get(i)+""+" | QUANTITY: "+orderQuantity.get(i)+" | TOTAL: "+totalPrice.get(i));
+    }
+    // prt("YOUR TOTAL BILL: "+(String.format("%.2f",total))); // String format purpose is to make the digits of decimal into specified digits. For example, instead of '2.6969' it will turn to '2.69' 
+    prt("YOUR TOTAL BILL: "+(String.format("%.2f",totalplusVAT)));
+
+    while(true){//   LOOPING FOR DISCOUNT SELECTION. 
+
+    prt("\nAPPLY DISCOUNT?"+"\nTYPE 'PWD'    | FOR PWD - 15%OFF "+"\nTYPE 'SENIOR' | FOR SENIOR - 20%OFF");
+    prt("TYPE 'NO'     | FOR NO DISCOUNT");
+    prt("Enter: ");
+    String ans=sc.next();
+    if(ans.toUpperCase().equals("PWD")){ // FOR PWD DISCOUNT
+    float discountwithVAT = totalplusVAT*discountPWD;
+    float discounted = totalplusVAT-discountwithVAT;
+    prt("\nDISCOUNT FOR PWD APPLIED: "+(String.format("%.2f",discounted))); // String format purpose is to make the digits of decimal into specified digits. For example, instead of '2.6969' it will turn to '2.69'
+    prt("ENTER YOUR CASH: ");
+    cash=sc.nextFloat();
+    float bill = cash-discounted;
+    prt("\nYOUR EXCHANGE: "+bill+"Php\n");
+    prt("RECEIPT: \n");
+    for(int i=0; i<orderNames.size(); i++){ //TO DISPLAY THE LISTS OF NAME OF THE ORDER, QUANTITY, AND PRICE
+        prt(orderQuantity.get(i)+"x "+orderNames.get(i)+"  "+totalPrice.get(i)+"Php");
+        totalItems += orderQuantity.get(i);
+    }
+    prt("\n"+totalItems+" ITEMS(s)");
+    prt("TOTAL DUE: "+(String.format("%.2f", discounted))); // String format purpose is to make the digits of decimal into specified digits. For example, instead of '2.6969' it will turn to '2.69'
+    prt("CASH: "+cash);
+    prt("CHANGE DUE: "+(String.format("%.2f", bill))); // String format purpose is to make the digits of decimal into specified digits. For example, instead of '2.6969' it will turn to '2.69'
+    prt("\nVATable Sales: "+(String.format("%.2f",calculateVAT2))); // String format purpose is to make the digits of decimal into specified digits. For example, instead of '2.6969' it will turn to '2.69'
+    prt("VAT-Exempt Sales: 0.0");
+    prt("VAT Zero-Rated Sales: 0.0");
+    prt("VAT Amount: "+(String.format("%.2f",calculateVAT))); // String format purpose is to make the digits of decimal into specified digits. For example, instead of '2.6969' it will turn to '2.69'
+    
+    prt("\n*************THANK YOU FOR ORDERING!************\n ");
+    System.exit(0);
+
+    }else if(ans.toUpperCase().equals("SENIOR")){ // FOR SENIOR DISCOUNT
+        float discountwithVAT = totalplusVAT*discountSenior;
+        float discounted = totalplusVAT-discountwithVAT;
+        prt("\nDISCOUNT FOR SENIOR APPLIED: "+(String.format("%.2f", discounted))); // String format purpose is to make the digits of decimal into specified digits. For example, instead of '2.6969' it will turn to '2.69'
+        prt("ENTER YOUR CASH: ");
+        cash=sc.nextFloat();
+        float bill = cash-discounted;
+        prt("\nYOUR EXCHANGE: "+bill+"Php\n");
+        prt("RECEIPT: \n");
+    
+        for(int i=0; i<orderNames.size(); i++){ //TO DISPLAY THE LISTS OF NAME OF THE ORDER, QUANTITY, AND PRICE
+            prt(orderQuantity.get(i)+"x "+orderNames.get(i)+"  "+totalPrice.get(i)+"Php");
+            totalItems += orderQuantity.get(i);
+        }
+        prt("\n"+totalItems+" ITEMS(s)");
+        prt("TOTAL DUE: "+(String.format("%.2f", discounted))); // String format purpose is to make the digits of decimal into specified digits. For example, instead of '2.6969' it will turn to '2.69'
+        prt("CASH: "+cash);
+        prt("CHANGE DUE: "+(String.format("%.2f", bill))); // String format purpose is to make the digits of decimal into specified digits. For example, instead of '2.6969' it will turn to '2.69'
+        prt("\nVATable Sales: "+(String.format("%.2f",calculateVAT2))); // String format purpose is to make the digits of decimal into specified digits. For example, instead of '2.6969' it will turn to '2.69'
+        prt("VAT-Exempt Sales: 0.0");
+        prt("VAT Zero-Rated Sales: 0.0");
+        prt("VAT Amount: "+(String.format("%.2f",calculateVAT))); // String format purpose is to make the digits of decimal into specified digits. For example, instead of '2.6969' it will turn to '2.69'
+        
+        prt("\n*************THANK YOU FOR ORDERING!************\n ");
+        System.exit(0); // TO FORCEFULLY EXIT THE TERMINAL WITHOUT LOOPING TWICE.
+    } else if (ans.toUpperCase().equals("NO")){
+    prt("");
+    for(int i=0; i<orderNames.size(); i++){
+        prt(orderNames.get(i)+ " | PRICE: "+orderPrice.get(i)+""+" | QUANTITY: "+orderQuantity.get(i)+" | TOTAL: "+totalPrice.get(i));
+    }
+    //prt("YOUR TOTAL BILL: "+(String.format("%.2f",total))); // String format purpose is to make the digits of decimal into specified digits. For example, instead of '2.6969' it will turn to '2.69'
+    prt("YOUR TOTAL BILL: "+(String.format("%.2f",totalplusVAT)));
+    prt("\nENTER YOUR CASH: ");
+    cash=sc.nextFloat();
+    float bill = cash-totalplusVAT;
+    prt("\nYOUR EXCHANGE: "+(String.format("%.2f", bill)+"Php\n")); // String format purpose is to make the digits of decimal into specified digits. For example, instead of '2.6969' it will turn to '2.69'
+    prt("RECEIPT: \n");
+
+    for(int i=0; i<orderNames.size(); i++){ //TO DISPLAY THE LISTS OF NAME OF THE ORDER, QUANTITY, AND PRICE
+        prt(orderQuantity.get(i)+"x "+orderNames.get(i)+"  "+totalPrice.get(i));
+        totalItems += orderQuantity.get(i);
+    }
+    prt("\n"+totalItems+" ITEM(s)");
+    prt("TOTAL DUE: "+(String.format("%.2f", totalplusVAT))); // String format purpose is to make the digits of decimal into specified digits. For example, instead of '2.6969' it will turn to '2.69'
+    prt("CASH: "+cash);
+    prt("CHANGE DUE: "+(String.format("%.2f",bill))); // String format purpose is to make the digits of decimal into specified digits. For example, instead of '2.6969' it will turn to '2.69'
+    prt("\nVATable Sales: "+(String.format("%.2f",calculateVAT2))); // String format purpose is to make the digits of decimal into specified digits. For example, instead of '2.6969' it will turn to '2.69'
+    prt("VAT-Exempt Sales: 0.00");
+    prt("VAT Zero-Rated Sales: 0.00");
+    prt("VAT Amount: "+(String.format("%.2f",calculateVAT))); // String format purpose is to make the digits of decimal into specified digits. For example, instead of '2.6969' it will turn to '2.69'
+    
+    prt("\n*************THANK YOU FOR ORDERING!************\n ");
+    System.exit(0); // TO FORCEFULLY EXIT THE TERMINAL WITHOUT LOOPING TWICE.
+    }else{
+        prt("\nINVALID INPUT! PLEASE TRY AGAIN.");
+    }
+}
+}
+  
+    public void discardOrder(){
+        prt("\nORDER DISCARDED. \n ");
+      System.exit(0); // TO FORCEFULLY EXIT THE TERMINAL WITHOUT LOOPING TWICE.
+    }
+
+
+
+
+
+//customized system.out.println
+static void prt(String txt){
+    System.out.println(txt);
+}
+}
+
+
+
+
+//second class (MAIN CLASS)
+public class Mainn {
+    public static void main(String[] args) {
+        Ordering urdir = new Ordering();   
+        urdir.FoodDisplay();
+        urdir.pickFood();
+        urdir.choiceC(); 
+    }
+}
