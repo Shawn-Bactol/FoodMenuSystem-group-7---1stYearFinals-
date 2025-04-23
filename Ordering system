@@ -1,4 +1,15 @@
-// first classs
+UPDATED: group meals category added, changed constructors name
+// MAIN CLASS:
+public class Mainn {
+    public static void main(String[] args) {
+        Ordering order = new Ordering();   
+        order.FoodDisplay();
+        order.SelectOrder();
+        order.choiceOption(); 
+    }
+}
+
+// SECOND CLASS (food display, calculation, etc.)
 import java.util.*;
 public class Ordering {
 
@@ -30,15 +41,18 @@ float reg2 = 164.00f;
 float reg3 = 154.00f;
 float reg4 = 189.00f;
 float reg5 = 99.00f;
+
 //Declaration variables for Solo Fiesta category
 float sf1 = 189.00f;
 float sf2 = 219.00f;
 float sf3 = 244.00f;
 float sf4 = 250.00f;
 float sf5 = 275.00f;
+
 //Declaration variables for Pork BBQ category
 float pbbq1 = 99.00f;
 float pbbq2 = 129.00f;
+
 //Declaration variables for HALO-HALO category
 float halo1 = 39.00f;
 float halo2 = 70.00f;
@@ -46,6 +60,26 @@ float halo3 = 90.00f;
 float halo4 = 39.00f;
 float halo5 = 70.00f;
 float halo6 = 90.00f;
+
+//Declaration variables for SISIG category
+float sisig1 = 99.00f;
+float sisig2 = 129.00f;
+
+//Declaration variables for SISIG category
+float liempo1 = 129.00f;
+float liempo2 = 154.00f;
+
+//Declaration variables for GROUP MEALS category
+float grpm1 = 490.00f;
+float grpm2 = 246.00f;
+float grpm3 = 570.00f;
+float grpm4 = 296.00f;
+float grpm5 = 475.00f;
+float grpm6 = 193.00f;
+float grpm7 = 305.00f;
+float grpm8 = 297.00f;
+float grpm9 = 332.00f;
+float grpm10 = 503.00f;
 
 //Declaration variables for the totalizalitaion
 float total = 0;
@@ -68,13 +102,13 @@ List<Integer> orderQuantity = new ArrayList<>();
 List<Float> totalPrice = new ArrayList<>();
 List<Integer> foodItems = new ArrayList<>();
 
-public void pickFood(){
+public void SelectOrder(){
     int pick = 0;
     int regular = 0;
    // boolean a = true;            (IGNORE THIS COMMENT LINE).
  ///   while(true){                (IGNORE THIS COMMENT LINE).
         
- while(pick<1||pick>5){ // LOOPING FOR PICKING CHOICE
+ while(pick<1||pick>11){ // LOOPING FOR PICKING CHOICE
 
     try {// Try Catch for 'INPUT MISMATCH' EXCEPTION
  prt("\nPICK YOUR CHOICE : ");
@@ -93,7 +127,7 @@ public void pickFood(){
     prt("> [4] Chicken Inasal Pecho Unli-Rice Solo = 189php");
     prt("> [5] Chicken Inasal Regular = 99php");
     
-    while(regular<1||regular>5){
+    while(regular<1||regular>5){ //LOOPING FOR REGULAR CATEGORY
 
     try{// Try Catch for 'INPUT MISMATCH' EXCEPTION
     prt("CHOOSE YOUR ORDER : ");
@@ -163,6 +197,7 @@ public void pickFood(){
         totalPrice.add(totalP);
     }
     }
+
     }else if(pick==2){                           // SOLO FIESTA
         prt("\n* SOLO-FIESTA *");
         prt("> [1] Solo Fiesta 2pc pork BBQ 1r solo = 189php");
@@ -228,6 +263,7 @@ public void pickFood(){
             orderQuantity.add(quantity);
             totalPrice.add(totalP);
         }    
+
         }else if(pick==3){                           //PORK BBQ
             prt("\n* PORK BBQ *");
             prt("> [1] 2pc Pork BBQ with Plain Rice and Spiced Vinegar = 99php");
@@ -257,7 +293,8 @@ public void pickFood(){
                 orderQuantity.add(quantity);
                 totalPrice.add(totalP);
             }
-        }else if(pick==4){ // HALO-HALO
+
+        }else if(pick==4){                      // HALO-HALO
             prt("\n* HALO-HALO *");
             prt("> [1] Extra Creamy Halo-Halo 8oz Add-on = 39php");
             prt("> [2] Extra Creamy Halo-Halo Small = 70php");
@@ -334,12 +371,197 @@ public void pickFood(){
                 orderQuantity.add(quantity);
                 totalPrice.add(totalP);
             }
-        }else if(pick==5){ // SISIG
+
+        }else if(pick==5){                           // SISIG
+         prt("\n* SISIG *");
+         prt("> [1] Pork Sisig 1 Rice Solo = 99php");
+         prt("> [2] Bangus Sisig 1 Rice Solo = 129php");
+         prt("ENTER YOUR ORDER: ");
+         int sisig=sc.nextInt();
+         if(sisig==1){
+            prt("\n*You choose Pork Sisig 1 Rice Solo for "+sisig1+"Php");
+            prt("ENTER QUANTITY : ");
+            int quantity=sc.nextInt();
+            sc.nextLine();
+            total+=quantity*sisig1;
+            totalP = quantity*sisig1;
+            orderNames.add("Pork Sisig 1 Rice Solo");
+            orderPrice.add(sisig1);
+            orderQuantity.add(quantity);
+            totalPrice.add(totalP);
+         }else if(sisig==2){
+            prt("\n*You choose Bangus Sisig 1 Rice Solo for "+sisig2+"Php");
+            prt("ENTER QUANTITY : ");
+            int quantity=sc.nextInt();
+            sc.nextLine();
+            total+=quantity*sisig2;
+            totalP = quantity*sisig2;
+            orderNames.add("Bangus Sisig 1 Rice Solo");
+            orderPrice.add(sisig2);
+            orderQuantity.add(quantity);
+            totalPrice.add(totalP);
+         }
+
+        }else if (pick==6){                                   //LIEMPO
+         prt("* LIEMPO *");
+         prt("> [1] Grilled Liempo 1 Rice Solo = 129php");
+         prt("> [2] Sizzling Liempo 1 Rice Solo = 154php");
+         prt("ENTER YOUR ODER: ");
+         int liempo=sc.nextInt();
+         if(liempo==1){
+            prt("\n*You choose Grilled Liempo 1 Rice Solo for "+liempo1+"Php");
+            prt("ENTER QUANTITY : ");
+            int quantity=sc.nextInt();
+            sc.nextLine();
+            total+=quantity*liempo1;
+            totalP = quantity*liempo1;
+            orderNames.add("Grilled Liempo 1 Rice Solo");
+            orderPrice.add(liempo1);
+            orderQuantity.add(quantity);
+            totalPrice.add(totalP);
+         }else if(liempo==2){
+            prt("\n*You choose Sizzling Liempo 1 Rice Solo for "+liempo2+"Php");
+            prt("ENTER QUANTITY : ");
+            int quantity=sc.nextInt();
+            sc.nextLine();
+            total+=quantity*liempo2;
+            totalP = quantity*liempo2;
+            orderNames.add("Sizzling Liempo 1 Rice Solo");
+            orderPrice.add(liempo2);
+            orderQuantity.add(quantity);
+            totalPrice.add(totalP);
+         }
+         
+        }else if(pick==7){                       //GROUP MEALS
+         prt("*\n GROUP MEALS *");
+         prt("> [1] Chicken Inasal Paa Family Size = 490php");
+         prt("> [2] Chicken Inasal Paa Buddy Size = 246php");
+         prt("> [3] Chicken Inasal Pecho Family Size = 570php");
+         prt("> [4] Chicken Inasal Pecho Buddy Size = 296php ");
+         prt("> [5] Pork BBQ Family Size = 475php");
+         prt("> [6] Pork BBQ Buddy Size = 193php");
+         prt("> [7] Palabok Family Size = 305php");
+         prt("> [8] Pork Sisig Family Size = 297php");
+         prt("> [9] Bangus Sisig Family Size = 332php");
+         prt("> [10] Grilled Liempo Family Size = 503php");
+         prt("ENTER YOUR ORDER: ");
+         int groupM=sc.nextInt();
+         if(groupM==1){
+            prt("\n*You choose Chicken Inasal Paa Family Size for "+grpm1+"Php");
+            prt("ENTER QUANTITY : ");
+            int quantity=sc.nextInt();
+            sc.nextLine();
+            total+=quantity*grpm1;
+            totalP = quantity*grpm1;
+            orderNames.add("Chicken Inasal Paa Family Size");
+            orderPrice.add(grpm1);
+            orderQuantity.add(quantity);
+            totalPrice.add(totalP);
+         }else if (groupM==2){
+            prt("\n*You choose Chicken Inasal Paa Buddy Size for "+grpm2+"Php");
+            prt("ENTER QUANTITY : ");
+            int quantity=sc.nextInt();
+            sc.nextLine();
+            total+=quantity*grpm2;
+            totalP = quantity*grpm2;
+            orderNames.add("Chicken Inasal Paa Buddy Size");
+            orderPrice.add(grpm2);
+            orderQuantity.add(quantity);
+            totalPrice.add(totalP);
+         }else if (groupM==3){
+            prt("\n*You choose Chicken Inasal Pecho Family Size for "+grpm3+"Php");
+            prt("ENTER QUANTITY : ");
+            int quantity=sc.nextInt();
+            sc.nextLine();
+            total+=quantity*grpm3;
+            totalP = quantity*grpm3;
+            orderNames.add("Chicken Inasal Pecho Family Size");
+            orderPrice.add(grpm3);
+            orderQuantity.add(quantity);
+            totalPrice.add(totalP);
+         }else if (groupM==4){
+            prt("\n*You choose Chicken Inasal Pecho Buddy Size for "+grpm4+"Php");
+            prt("ENTER QUANTITY : ");
+            int quantity=sc.nextInt();
+            sc.nextLine();
+            total+=quantity*grpm4;
+            totalP = quantity*grpm4;
+            orderNames.add("Chicken Inasal Pecho Buddy Size");
+            orderPrice.add(grpm4);
+            orderQuantity.add(quantity);
+            totalPrice.add(totalP);
+         }else if (groupM==5){
+            prt("\n*You choose Pork BBQ Family Size for "+grpm5+"Php");
+            prt("ENTER QUANTITY : ");
+            int quantity=sc.nextInt();
+            sc.nextLine();
+            total+=quantity*grpm5;
+            totalP = quantity*grpm5;
+            orderNames.add("Pork BBQ Family Size");
+            orderPrice.add(grpm5);
+            orderQuantity.add(quantity);
+            totalPrice.add(totalP);
+         }else if (groupM==6){
+            prt("\n*You choose Pork BBQ Buddy Size for "+grpm6+"Php");
+            prt("ENTER QUANTITY : ");
+            int quantity=sc.nextInt();
+            sc.nextLine();
+            total+=quantity*grpm6;
+            totalP = quantity*grpm6;
+            orderNames.add("Pork BBQ Buddy Size");
+            orderPrice.add(grpm6);
+            orderQuantity.add(quantity);
+            totalPrice.add(totalP);
+         }else if (groupM==7){
+            prt("\n*You choose Palabok Family Size for "+grpm7+"Php");
+            prt("ENTER QUANTITY : ");
+            int quantity=sc.nextInt();
+            sc.nextLine();
+            total+=quantity*grpm7;
+            totalP = quantity*grpm7;
+            orderNames.add("Palabok Family Size");
+            orderPrice.add(grpm7);
+            orderQuantity.add(quantity);
+            totalPrice.add(totalP);
+         }else if (groupM==8){
+            prt("\n*You choose Pork Sisig Family Size for "+grpm8+"Php");
+            prt("ENTER QUANTITY : ");
+            int quantity=sc.nextInt();
+            sc.nextLine();
+            total+=quantity*grpm8;
+            totalP = quantity*grpm8;
+            orderNames.add("Pork Sisig Family Size");
+            orderPrice.add(grpm8);
+            orderQuantity.add(quantity);
+            totalPrice.add(totalP);
+         }else if (groupM==9){
+            prt("\n*You choose Bangus Sisig Family Size for "+grpm9+"Php");
+            prt("ENTER QUANTITY : ");
+            int quantity=sc.nextInt();
+            sc.nextLine();
+            total+=quantity*grpm9;
+            totalP = quantity*grpm9;
+            orderNames.add("Bangus Sisig Family Size");
+            orderPrice.add(grpm9);
+            orderQuantity.add(quantity);
+            totalPrice.add(totalP);
+         }else if (groupM==10){
+            prt("\n*You choose Grilled Liempo Family Size for "+grpm10+"Php");
+            prt("ENTER QUANTITY : ");
+            int quantity=sc.nextInt();
+            sc.nextLine();
+            total+=quantity*grpm10;
+            totalP = quantity*grpm10;
+            orderNames.add("Grilled Liempo Family Size");
+            orderPrice.add(grpm10);
+            orderQuantity.add(quantity);
+            totalPrice.add(totalP);
+         }
 
         }
  }
  }
-public void choiceC(){
+public void choiceOption(){
     String pick2="";
     while (true||pick2.isBlank()){
     prt("\nPress 'Y' to order more");
@@ -364,11 +586,11 @@ public void choiceC(){
  prt("**        [10] LUMPIANG TOGUE         **");
  prt("**        [11] DRINKS                 **");
  prt("****************************************");
-    pickFood();
-    choiceC();
-    billBruh();
+    SelectOrder();
+    choiceOption();
+    FoodBill();
    }else if(pick2.toUpperCase().equals("N")){
-    billBruh();
+    FoodBill();
    } else if(pick2.toUpperCase().equals("D")){
     String yes = "";
     while(true||yes.isBlank()){
@@ -377,7 +599,7 @@ public void choiceC(){
          if(yes.toUpperCase().equals("Y")){
             discardOrder();
          }else if(yes.toUpperCase().equals("N")){
-           choiceC();
+           choiceOption();
          }else{
             prt("\nINVALID INPUT! PLEASE TRY AGAIN.");
          }
@@ -412,18 +634,18 @@ public void choiceC(){
 //}
 //} pickfood brace
    
-    public void billBruh(){
+    public void FoodBill(){
 
-    float cash = 0.0f; //Declaration variable for 'cash'
+    float cash = 0.00f; //Declaration variable for 'cash'
 
-        
+    //VAT application/Calculation:
     calculateVAT = VAT*total;
     calculateVAT2 = total-calculateVAT;
     totalplusVAT = calculateVAT2+calculateVAT; 
 
     prt("\nBILL: \n");
     for(int i=0; i<orderNames.size(); i++){
-        prt(orderNames.get(i)+ " | PRICE: "+orderPrice.get(i)+""+" | QUANTITY: "+orderQuantity.get(i)+" | TOTAL: "+totalPrice.get(i));
+        prt(orderNames.get(i)+" | PRICE: "+orderPrice.get(i)+" | QUANTITY: "+orderQuantity.get(i)+" | TOTAL: "+totalPrice.get(i));
     }
     // prt("YOUR TOTAL BILL: "+(String.format("%.2f",total))); // String format purpose is to make the digits of decimal into specified digits. For example, instead of '2.6969' it will turn to '2.69' 
     prt("YOUR TOTAL BILL: "+(String.format("%.2f",totalplusVAT)));
@@ -432,7 +654,7 @@ public void choiceC(){
 
     prt("\nAPPLY DISCOUNT?"+"\nTYPE 'PWD'    | FOR PWD - 15%OFF "+"\nTYPE 'SENIOR' | FOR SENIOR - 20%OFF");
     prt("TYPE 'NO'     | FOR NO DISCOUNT");
-    prt("Enter: ");
+    prt("ENTER: ");
     String ans=sc.next();
     if(ans.toUpperCase().equals("PWD")){ // FOR PWD DISCOUNT
     float discountwithVAT = totalplusVAT*discountPWD;
@@ -445,7 +667,7 @@ public void choiceC(){
     prt("RECEIPT: \n");
     for(int i=0; i<orderNames.size(); i++){ //TO DISPLAY THE LISTS OF NAME OF THE ORDER, QUANTITY, AND PRICE
         prt(orderQuantity.get(i)+"x "+orderNames.get(i)+"  "+totalPrice.get(i)+"Php");
-        totalItems += orderQuantity.get(i);
+        totalItems += orderQuantity.get(i); // TO DISPLAY THE NUMBER OF ITEMS
     }
     prt("\n"+totalItems+" ITEMS(s)");
     prt("TOTAL DUE: "+(String.format("%.2f", discounted))); // String format purpose is to make the digits of decimal into specified digits. For example, instead of '2.6969' it will turn to '2.69'
@@ -531,17 +753,4 @@ public void choiceC(){
 static void prt(String txt){
     System.out.println(txt);
 }
-}
-
-
-
-
-//second class (MAIN CLASS)
-public class Mainn {
-    public static void main(String[] args) {
-        Ordering urdir = new Ordering();   
-        urdir.FoodDisplay();
-        urdir.pickFood();
-        urdir.choiceC(); 
-    }
 }
